@@ -1,3 +1,3 @@
-FROM ros:humble-ros-core
+FROM ros:humble
 
 RUN apt-get update
