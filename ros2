@@ -1,3 +1,5 @@
 FROM ros:humble
 
 RUN apt-get update
+RUN apt-get install ros-$ROS_DISTRO-demo-nodes-cpp
+RUN apt-get install ros-$ROS_DISTRO-demo-nodes-py

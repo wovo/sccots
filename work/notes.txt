@@ -1,0 +1,130 @@
+docker
+
+https://docs.docker.com/glossary/
+
+dockerfile 
+    recepy (blueprint) for creating an image
+    can build on a parent image (specified by another docker file)
+    
+layer
+    cached result of applying a line from a dockerfile 
+    speeds up creating an image when steps can be reused
+    
+image (container image)
+    result of running a docker file
+    unmutable
+
+container    
+    mutable copy of an image, can be persistent
+    docker run -d -p 80:80 docker/getting-started
+    
+kubernetes
+    automates deployment, scaling, and management of containerized applications
+
+docker hub
+    github for docker things  
+
+repository
+    collection of docker images    
+    
+node
+    thing that runs docker engine
+    so it can run tasks 
+
+service
+
+swarm
+
+task
+    container + commands to run on that container
+    
+volume (data volume)
+    persistent file system used by containers for permanent storage
+    
+docker on Pi
+    sudo apt-get update
+    sudo apt-get upgrade -y
+    curl -sSL https://get.docker.com | sh
+    sudo usermod -aG docker [user_name]
+    docker version
+    change hostname?
+    sudo nano /etc/hostname
+    sudo nano /etc/hosts
+    
+docker on windows
+    install docker desktop
+    start it after reboot
+        
+    
+    
+
+================================================   
+
+https://docs.ros.org/en/humble/
+https://docs.ros.org/en/humble/Tutorials.html
+
+ros2
+    more sane version of ros
+    unified thin C++ / Python interfaces on top of same C features
+    
+humble
+    (Humble Hawksbill)
+    https://docs.ros.org/en/humble/
+    as of 2023 the latest version of ros2
+
+topic
+    distributed data
+    ros2 topic 
+        list
+        info <topic>
+        echo <topic> 
+        pub <topic> <type> <data> --once --rate
+        hz <topic>
+    ros2 interface show <topic>    
+
+interface
+    communication between ros nodes
+    can be message, service or action
+    https://design.ros2.org/articles/interface_definition.html
+    
+message
+    one-way publish-subscribe (default queued) interface
+    .msg file describes a message
+    in msg/ directory of a ROS package
+
+service
+    request / response interface
+    .srv describes a service (request and response)
+    
+action 
+    request - feedback - final interface
+    
+package  
+    collection of nodes  
+
+parameter
+    configuration value for a node
+    
+node
+    participant in ROS communication
+    
+image message
+    http://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/Image.html
+
+bag file
+    timed recording of topics
+   
+==================================================================
+
+install docker
+docker build github.com/wovo/sccots#main:ros2 -t sccots - not on windows :(
+docker build github.com/wovo/sccots#main -f ros2 -t sccots
+docker run --name work -it sccots 
+docker restart work
+docker attach work
+docker exec -it work /bin/sh
+
+attaching/deattaching: https://docs.docker.com/engine/reference/commandline/attach/
+(security concerns)
+
+cd home
