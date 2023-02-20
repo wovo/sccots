@@ -119,10 +119,16 @@ bag file
 install docker
 docker build github.com/wovo/sccots#main:ros2 -t sccots - not on windows :(
 docker build github.com/wovo/sccots#main -f ros2 -t sccots
-docker run --name work -it sccots 
+docker run --name work --rm --device "/dev/video0:/dev/video0" -it sccots 
 docker restart work
 docker attach work
+docker stop work
+docker remove -f work
 docker exec -it work /bin/sh
+ros2 run demo_nodes_cpp listener
+ros2 run demo_nodes_cpp talker
+
+two docker containers on the same machine communicate
 
 attaching/deattaching: https://docs.docker.com/engine/reference/commandline/attach/
 (security concerns)

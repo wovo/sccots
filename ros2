@@ -1,5 +1,7 @@
 FROM ros:humble
 
 RUN apt-get update
+RUN apt-get install -y iputils-ping
+RUN apt-get install -y cheese
 RUN apt-get install -y ros-$ROS_DISTRO-demo-nodes-cpp
 RUN apt-get install -y ros-$ROS_DISTRO-demo-nodes-py
