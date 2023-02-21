@@ -1,0 +1,67 @@
+=============================================================================
+
+QI opzet
+
+=============================================================================
+
+# re-usable (abstract) components (containers)
+
+camera
+    -> trigger
+    frame ->
+    
+belt_encoder
+    -> position
+
+object_detector
+    -> detected
+
+ai
+    -> image
+    * verdict ->
+
+actuator
+    * -> action
+    
+    
+=============================================================================
+
+# business logic (central container)
+
+object_detector_offset = 0
+camera_offset = 10
+actuator_offset = 30
+forget_offset = 100
+
+objects = {}
+
+on position
+    p = position
+    
+    if objects[ p - camera_offset ]:
+       frame_target = objects[ p - camera_offset ]
+       trigger -> camera
+       
+    if objects[ p - actuator_offset ]:   
+       objects[ p ].verdict -> actuator
+       
+    if objects[ p - forget_offset ]:
+       remove objects[ p - 100 ]    
+    
+on detected
+    objects[ p ] = object()
+
+on frame
+    frame_target
+    # for debugging: frame_target.frame = frame
+    verdict_target = frame_target
+    frame -> ai
+
+on verdict
+    verdict_target.verdict = f( verdict )
+    
+# pass ID along?
+# camera frame queueing
+# ai verdict queueing  
+
+        
