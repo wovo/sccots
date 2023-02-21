@@ -117,14 +117,15 @@ bag file
 ==================================================================
 
 install docker
-docker build github.com/wovo/sccots#main:ros2 -t sccots - not on windows :(
-docker build github.com/wovo/sccots#main -f ros2 -t sccots
+docker build github.com/wovo/sccots#main:ros -t sccots - not on windows :(
+docker build github.com/wovo/sccots#main -f ros -t sccots
 docker run --name work --rm --device "/dev/video0:/dev/video0" -it sccots 
 docker restart work
 docker attach work
 docker stop work
 docker remove -f work
-docker exec -it work /bin/sh
+docker exec -it work bash
+docker logs work
 ros2 run demo_nodes_cpp listener
 ros2 run demo_nodes_cpp talker
 
@@ -137,8 +138,20 @@ cd home
 
 =====================================================================
 
+https://docs.ros.org/en/foxy/Releases.html
+humble not on Ubuntu
+galactic not supported??
+-> use foxy
+https://hub.docker.com/_/ros ->
+
 install ros2 on Ubuntu
 
 sudo apt update
 sudo apt upgrade
-sudo apt install -y ros-humble-desktop
+sudo apt install -y ros-foxy-desktop
+sudo apt install -y libopencv-dev python3-opencv
+
+in the docker:
+cd root
+bash
+source /*.sh

@@ -3,14 +3,16 @@ FROM ros:foxy
 RUN apt-get update
 RUN apt-get upgrade -y
 
-#RUN apt-get install -y ros-build-essentials
 RUN apt-get install -y ros-dev-tools
 RUN apt-get install -y libopencv-dev python3-opencv
 
-#RUN apt-get install -y git
-#RUN apt-get install -y pip
-#RUN apt-get install -y iputils-ping
-#RUN apt-get install -y nano
+RUN apt-get install -y git
+RUN apt-get install -y pip
+RUN apt-get install -y iputils-ping
+RUN apt-get install -y nano
 
-#RUN apt-get install -y ros-$ROS_DISTRO-demo-nodes-cpp
-#RUN apt-get install -y ros-$ROS_DISTRO-demo-nodes-py
+RUN apt-get install -y ros-$ROS_DISTRO-demo-nodes-cpp
+RUN apt-get install -y ros-$ROS_DISTRO-demo-nodes-py
+
+RUN git clone https://www.github.com/wovo/sccots
+
