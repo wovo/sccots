@@ -3,8 +3,8 @@ FROM ros:galactic-base
 RUN apt-get update
 RUN apt-get upgrade -y
 
-RUN apt-get ros_build_essentials
-RUn apt-get ros_dev_tools
+RUN apt-get install - y ros_build_essentials
+RUn apt-get install - y ros_dev_tools
 
 #RUN apt-get install -y git
 #RUN apt-get install -y pip

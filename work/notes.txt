@@ -134,3 +134,11 @@ attaching/deattaching: https://docs.docker.com/engine/reference/commandline/atta
 (security concerns)
 
 cd home
+
+=====================================================================
+
+install ros2 on Ubuntu
+
+sudo apt update
+sudo apt upgrade
+sudo apt install -y ros-humble-desktop
