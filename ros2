@@ -1,4 +1,4 @@
-FROM osrf/ros:foxy-base
+FROM ros:foxy-base
 
 RUN apt-get update
 RUN apt-get upgrade -y
