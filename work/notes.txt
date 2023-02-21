@@ -161,4 +161,10 @@ https://github.com/clayrisser/docker-gtk
 # -e DISPLAY=($DISPLAY) -v /tmp/.X11-unix:/tmp/.X11-unix
 
 https://answers.ros.org/question/358453/ros2-docker-multiple-hosts/
-docker run --rm -d --net=host --pid=host <IMAGE>
+docker run --rm --net=host --pid=host <IMAGE>
+
+docker run --net=host --pid=host --name work --rm -v ~/work:/root/work --device "/dev/video0:/dev/video0" -it sccots bash
+
+feh -Z -R 1 -Y
+capture has a few seconds delay, but that seems to be the camera
+@pi larger images are not received
