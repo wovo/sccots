@@ -15,7 +15,7 @@ RUN apt-get install -y ros-$ROS_DISTRO-demo-nodes-cpp
 RUN apt-get install -y ros-$ROS_DISTRO-demo-nodes-py
 
 WORKDIR /root
-RUN echo "source scotts/scripts/startup" >>.bashrc
+RUN echo "source sccots/scripts/startup" >>.bashrc
 
 ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
 RUN git clone https://www.github.com/wovo/sccots
