@@ -3,8 +3,8 @@ FROM ros:foxy
 RUN apt-get update
 RUN apt-get upgrade -y
 
-RUN apt-get install -y ros_build_essentials
-RUN apt-get install -y ros_dev_tools
+RUN apt-get install -y ros-build-essentials
+RUN apt-get install -y ros-dev-tools
 RUN apt-get install -y libopencv-dev python3-opencv
 
 #RUN apt-get install -y git
