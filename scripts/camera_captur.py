@@ -2,6 +2,7 @@
 
 import os
 import cv2
+import time
 
 # open camera
 if os.name == 'nt':
@@ -14,13 +15,17 @@ cap.set( cv2.CAP_PROP_FRAME_WIDTH, 2560 )
 cap.set( cv2.CAP_PROP_FRAME_HEIGHT, 1440 )
 
 # take frame
-ret, frame = cap.read()
-
-# write frame to file
-cv2.imwrite( "image.jpg", frame)
+n = 0
+while True:
+    ret, frame = cap.read()
+    cv2.imwrite( "image.jpg", frame)
+    n += 1
+    print( "frame %d" % n )
+    time.sleep( 1.0 )
 
 # show in window
-if 1:
+# doens't work within docker
+if 0:
  while True:
     ret, frame = cap.read()
     frame = cv2.resize(frame, None, fx=0.5, fy=0.5, interpolation=cv2.INTER_AREA)

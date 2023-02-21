@@ -159,3 +159,6 @@ source /*.sh
 X11 from inside docker seems possible
 https://github.com/clayrisser/docker-gtk
 # -e DISPLAY=($DISPLAY) -v /tmp/.X11-unix:/tmp/.X11-unix
+
+https://answers.ros.org/question/358453/ros2-docker-multiple-hosts/
+docker run --rm -d --net=host --pid=host <IMAGE>
