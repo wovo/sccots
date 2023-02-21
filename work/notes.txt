@@ -142,7 +142,6 @@ https://docs.ros.org/en/foxy/Releases.html
 humble not on Ubuntu
 galactic not supported??
 -> use foxy
-https://hub.docker.com/_/ros ->
 
 install ros2 on Ubuntu
 
@@ -155,3 +154,8 @@ in the docker:
 cd root
 bash
 source /*.sh
+(error when in / immediately exits the shell)
+
+X11 from inside docker seems possible
+https://github.com/clayrisser/docker-gtk
+# -e DISPLAY=($DISPLAY) -v /tmp/.X11-unix:/tmp/.X11-unix

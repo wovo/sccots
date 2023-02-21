@@ -1,1 +1,2 @@
-sudo docker run --name work -e DISPLAY=($DISPLAY) -v /tmp/.X!!-unix:/tmp/.X11-unix --device "/dev/video0:/dev/video0" -it sccots
+sudo docker rm -f work
+sudo docker run -w /root -v ~/work:/root/work --name work --device "/dev/video0:/dev/video0" -it sccots
