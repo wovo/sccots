@@ -1,10 +1,7 @@
 echo "sccots environment"
-
 source /ros_entrypoint.sh
-export ROS_DOMAIN_ID=0
-set +e
-
 alias python="python3"
 alias p="python3"
-
+export ROS_DOMAIN_ID=0
+cp sccots/scripts/* work
 cd ~/work
