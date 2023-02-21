@@ -3,5 +3,4 @@ source /ros_entrypoint.sh
 alias python="python3"
 alias p="python3"
 export ROS_DOMAIN_ID=0
-cp sccots/scripts/* work
 cd ~/work
