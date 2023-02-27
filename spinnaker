@@ -1,5 +1,13 @@
 FROM ubuntu:22.04
 
+# for apt to be noninteractive
+ENV DEBIAN_FRONTEND noninteractive
+ENV DEBCONF_NONINTERACTIVE_SEEN true
+
+RUN echo "tzdata tzdata/Areas select Europe" >> preseed
+RUN echo "tzdata tzdata/Zones/Europe select Berlin" >> preseed
+RUN debconf-set-selections preseed.txt
+
 RUN apt-get update
 RUN apt-get upgrade -y
 
