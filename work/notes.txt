@@ -174,3 +174,8 @@ docker run --net=host --pid=host --name work --rm -v ~/work:/root/work --device 
 feh -Z -R 1 -Y
 capture has a few seconds delay, but that seems to be the camera
 @pi larger images are not received
+
+dds smared memory
+https://github.com/ros2/rmw_cyclonedds/blob/rolling/shared_memory_support.md
+https://discourse.ros.org/t/is-there-any-dds-implementation-using-shared-memory-inside-system/7609/24?page=2
+https://discourse.ros.org/t/is-there-any-dds-implementation-using-shared-memory-inside-system/7609/31?page=2

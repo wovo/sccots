@@ -1,0 +1,15 @@
+FROM ubuntu:22.04
+
+RUN apt-get update
+RUN apt-get upgrade -y
+
+RUN apt-get install -y libopencv-dev python3-opencv
+RUN apt-get install -y git pip nano 
+RUN apt-get install -y iputils-ping
+
+WORKDIR /root
+RUN echo "source sccots/scripts/spinnaker_shell" >>.bashrc
+
+ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
+RUN git clone https://www.github.com/wovo/sccots
+
