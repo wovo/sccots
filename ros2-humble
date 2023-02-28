@@ -46,8 +46,8 @@ RUN pip install --upgrade numpy matplotlib
 RUN pip install Pillow==9.2.0
 WORKDIR /root
 RUN git clone https://github.com/wovo/spinnaker
-RUN mv spinnaker/ubuntu2204/python/spinnaker_python-3.0.0.118-cp310-cp310-linux_x86_64.tar.gz sp.tgz
-RUN gunzip sp.tgz
+RUN mv spinnaker/ubuntu2204/python/spinnaker_python-3.0.0.118-cp310-cp310-linux_x86_64.tar.gz sp.tar.gz
+RUN tar -xzf sp.tar.gz
 #RUN pip install sp/spinnaker_python-3.x.x.x-cp310-cp310-linux_x86_64.whl
 
 # work environment
