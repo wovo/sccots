@@ -25,7 +25,7 @@ RUN apt update
 
 # install ros humble
 RUN apt install -y ros-humble-desktop-full
-RUN apt install ros-dev-tools
+RUN apt install -y ros-dev-tools
 
 
 
