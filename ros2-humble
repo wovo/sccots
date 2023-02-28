@@ -1,7 +1,7 @@
 # ubuntu LTS (jammy)
 # for 22.04 ros-humble-desktop package is not found
 # https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 # for apt to be noninteractive
 ENV DEBIAN_FRONTEND noninteractive
