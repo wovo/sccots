@@ -24,7 +24,8 @@ RUN echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/r
 
 # install ros humble
 RUN apt upgrade -y
-#RUN apt install ros-humble-base
+RUN apt update
+RUN apt install ros-humble-desktop
 #RUN apt install ros-dev-tools
 
 
