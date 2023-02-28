@@ -61,7 +61,7 @@ WORKDIR /root/temp
 RUN mv spinnaker/ubuntu2204/spinnaker-3.0.0.118-amd64-pkg.tar.gz sp.tar.gz
 RUN tar -xzf sp.tar.gz
 # script modified to run noninteractive
-RUN source spinnaker/ubuntu2204/install_spinnaker.sh
+RUN spinnaker/ubuntu2204/install_spinnaker.sh
 
 # cleanup
 WORKDIR /root
@@ -70,6 +70,9 @@ WORKDIR /root
 # setup work environment
 WORKDIR /root
 #RUN echo "source ros2_entrypoint.sh" >> .bashrc
+RUN echo "alias python=python3" >> .bashrc
+RUN echo "alias p=python3" >> .bashrc
+RUN echo "echo scotts ros2 humble spinnaker environment" >> .bashrc
 CMD [ "bash" ]
 
 
