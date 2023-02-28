@@ -1,5 +1,12 @@
+# ==========================================================================
+#
+# sccots ros2 docker file
+#
+# ==========================================================================
+
 # ubuntu LTS (jammy)
 # https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html
+# https://devanshdhrafani.github.io/blog/2021/04/15/dockerros2.html
 FROM ubuntu:22.04
 
 # for apt to be noninteractive
@@ -26,6 +33,13 @@ RUN apt update
 # install ros humble
 RUN apt install -y ros-humble-desktop-full
 RUN apt install -y ros-dev-tools
+COPY ros2_entrypoint.sh /root/.
+ENTRYPOINT ["/root/ros2_entrypoint.sh"]
+
+# install spinnaker
+
+# work environment
+CMD ["bash"]
 
 
 
