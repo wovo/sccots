@@ -61,8 +61,10 @@ RUN pip install simple-pyspin
 WORKDIR /root/temp
 RUN mv spinnaker/ubuntu2204/spinnaker-3.0.0.118-amd64-pkg.tar.gz sp.tar.gz
 RUN tar -xzf sp.tar.gz
-# script modified to run noninteractive
-#RUN bash spinnaker/ubuntu2204/install_spinnaker.sh
+WORKDIR /root/temp/spinnaker-3.0.0.118-amd64
+# modified scripts that runs noninteractive
+RUN cp ../spinnaker/ubuntu/install_spinnaker.sh .
+#RUN bash install_spinnaker.sh
 
 # cleanup
 WORKDIR /root
