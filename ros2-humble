@@ -64,7 +64,7 @@ RUN tar -xzf sp.tar.gz
 WORKDIR /root/temp/spinnaker-3.0.0.118-amd64
 # modified scripts that runs noninteractive
 # and prime for the ula to be accepted
-RUN apt intstall debconf-utils
+RUN apt install -y debconf-utils
 RUN cp ../spinnaker/ubuntu2204/install_spinnaker.sh .
 RUN ech "libgentl libspinnaker/accepted-flir-eula select true" | debconf-set-selections
 RUN bash install_spinnaker.sh
