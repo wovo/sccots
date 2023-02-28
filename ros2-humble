@@ -37,6 +37,7 @@ RUN apt update
 
 # install ros humble
 # https://devanshdhrafani.github.io/blog/2021/04/15/dockerros2.html
+# desktop-full might be overkill
 WORKDIR /root/temp
 RUN apt install -y ros-humble-desktop-full
 RUN apt install -y ros-dev-tools
@@ -61,7 +62,7 @@ WORKDIR /root/temp
 RUN mv spinnaker/ubuntu2204/spinnaker-3.0.0.118-amd64-pkg.tar.gz sp.tar.gz
 RUN tar -xzf sp.tar.gz
 # script modified to run noninteractive
-RUN spinnaker/ubuntu2204/install_spinnaker.sh
+#RUN bash spinnaker/ubuntu2204/install_spinnaker.sh
 
 # cleanup
 WORKDIR /root
