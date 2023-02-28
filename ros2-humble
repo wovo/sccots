@@ -63,8 +63,11 @@ RUN mv spinnaker/ubuntu2204/spinnaker-3.0.0.118-amd64-pkg.tar.gz sp.tar.gz
 RUN tar -xzf sp.tar.gz
 WORKDIR /root/temp/spinnaker-3.0.0.118-amd64
 # modified scripts that runs noninteractive
+# and prime for the ula to be accepted
+RUN apt intstall debconf-utils
 RUN cp ../spinnaker/ubuntu2204/install_spinnaker.sh .
-#RUN bash install_spinnaker.sh
+RUN ech "libgentl libspinnaker/accepted-flir-eula select true" | debconf-set-selections
+RUN bash install_spinnaker.sh
 
 # cleanup
 WORKDIR /root
@@ -75,12 +78,5 @@ WORKDIR /root
 #RUN echo "source ros2_entrypoint.sh" >> .bashrc
 RUN echo "alias python=python3" >> .bashrc
 RUN echo "alias p=python3" >> .bashrc
-RUN echo "echo scotts ros2 humble spinnaker environment" >> .bashrc
+RUN echo "echo scotts-ros2-humble-spinnaker environment" >> .bashrc
 CMD [ "bash" ]
-
-
-
-
-
-
-
