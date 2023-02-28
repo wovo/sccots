@@ -5,8 +5,6 @@
 # ==========================================================================
 
 # ubuntu LTS (jammy)
-# https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html
-# https://devanshdhrafani.github.io/blog/2021/04/15/dockerros2.html
 FROM ubuntu:22.04
 
 # for apt to be noninteractive
@@ -21,6 +19,8 @@ RUN update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
 # export LANG=en_US.UTF-8
 
 # magic to get the ros repository
+# https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html
+# add extra update at the end
 RUN apt install -y software-properties-common
 RUN add-apt-repository universe
 RUN apt update 
@@ -31,12 +31,27 @@ RUN apt upgrade -y
 RUN apt update
 
 # install ros humble
+# https://devanshdhrafani.github.io/blog/2021/04/15/dockerros2.html
 RUN apt install -y ros-humble-desktop-full
 RUN apt install -y ros-dev-tools
 COPY ros2_entrypoint.sh /root/.
 ENTRYPOINT ["/root/ros2_entrypoint.sh"]
 
 # install spinnaker
+# https://pypi.org/project/simple-pyspin/
+RUN apt install -y git pip
+RUN pip install --upgrade numpy matplotlib
+# pillow for python 3.10
+RUN pip install Pillow==9.2.0
+RUN git clone https://www.github.com/wovo/spinnaker
+RUN mv spinnaker/ubuntu2204/python/spinnaker_python-3.0.0.118-cp310-cp310-linux_x86_64.tar.gz sp.tar.gz
+RUN gunzip sp.tar.gz
+RUN pip install sp/spinnaker_python-3.x.x.x-cp310-cp310-linux_x86_64.whl
+
+
+
+
+
 
 # work environment
 CMD ["bash"]
