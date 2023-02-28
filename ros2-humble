@@ -34,8 +34,9 @@ RUN apt update
 # https://devanshdhrafani.github.io/blog/2021/04/15/dockerros2.html
 RUN apt install -y ros-humble-desktop-full
 RUN apt install -y ros-dev-tools
-#COPY ros2_entrypoint.sh /root/.
-#ENTRYPOINT ["/root/ros2_entrypoint.sh"]
+WORKDIR /root
+RUN wget https://github.com/J-Rojas/ros2-docker/blob/master/ros2_entrypoint.sh
+RUN echo "source ros2_entrypoint.sh" >> .bashrc
 
 # install spinnaker
 # https://pypi.org/project/simple-pyspin/
@@ -43,17 +44,14 @@ RUN apt install -y ros-dev-tools
 #RUN pip install --upgrade numpy matplotlib
 # pillow for python 3.10
 #RUN pip install Pillow==9.2.0
+WORKDIR /root
 #RUN git clone https://www.github.com/wovo/spinnaker
 #RUN mv spinnaker/ubuntu2204/python/spinnaker_python-3.0.0.118-cp310-cp310-linux_x86_64.tar.gz sp.tar.gz
 #RUN gunzip sp.tar.gz
 #RUN pip install sp/spinnaker_python-3.x.x.x-cp310-cp310-linux_x86_64.whl
 
-
-
-
-
-
 # work environment
+WORKDIR /root
 CMD ["bash"]
 
 
