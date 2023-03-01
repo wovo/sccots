@@ -1,0 +1,25 @@
+# install spinnaker python
+# https://pypi.org/project/simple-pyspin/
+mkdir temp
+cd temp
+sudo apt install -y git pip
+sudo pip install --upgrade numpy matplotlib
+# pillow for python 3.10
+sudo pip install Pillow==9.2.0
+sudo git clone https://github.com/wovo/spinnaker
+sudo mv spinnaker/ubuntu2204/python/spinnaker_python-3.0.0.118-cp310-cp310-linux_x86_64.tar.gz sppy.tar.gz
+sudo tar -xzf sppy.tar.gz
+sudo pip install *.whl
+sudo pip install simple-pyspin
+
+# install spinnaker drivers
+sudo mv spinnaker/ubuntu2204/spinnaker-3.0.0.118-amd64-pkg.tar.gz sp.tar.gz
+sudo tar -xzf sp.tar.gz
+cd spinnaker-3.0.0.118-amd64
+# modified scripts that runs noninteractive
+# and prime for the ula to be accepted
+sudo apt install -y debconf-utils
+sudo cp ../spinnaker/ubuntu2204/install_spinnaker.sh .
+sudo echo "libgentl libspinnaker/accepted-flir-eula select true" | debconf-set-selections
+sudo
+bash install_spinnaker.sh
