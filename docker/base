@@ -38,18 +38,20 @@ RUN apt update
 # https://devanshdhrafani.github.io/blog/2021/04/15/dockerros2.html
 # desktop-full is installed, this might be overkill
 WORKDIR /root/temp
-RUN apt install -y ros-humble-desktop-full
+RUN apt install -y ros-humble-desktop
 RUN apt install -y ros-dev-tools
 RUN git clone https://github.com/J-Rojas/ros2-docker
 RUN cp ros2-docker/ros2_entrypoint.sh /root
+WORKDIR /root
+#RUN echo "source ros2_entrypoint.sh" >> .bashrc
 
-# cleanup
+# cleanup (optional)
 WORKDIR /root
 #RUN rm -rf temp
 
 # setup work environment
 WORKDIR /root
-#RUN echo "source ros2_entrypoint.sh" >> .bashrc
+
 RUN echo "alias python=python3" >> .bashrc
 RUN echo "alias p=python3" >> .bashrc
 RUN echo "echo scotts-ros2-humble environment" >> .bashrc
