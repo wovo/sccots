@@ -27,13 +27,15 @@ The current sccots baseline is:
 
 ### Terminology
 
+[docker glossary](https://docs.docker.com/glossary/)
+
 A docker container is a running environment 
 with its own file system, but sharing the OS kernel
 with its host operating system and other docker images running on it.
 A docker container starts its life as a copy (instance) 
 of a docker image.
 
-A docker file is the specification for creating a docker image.
+A docker file is the specification (blueprint) for creating a docker image.
 
 The docker server is the entity that runs docker containers.
 A docker server on Linux can run only Linux containers.
@@ -82,6 +84,9 @@ sudo docker build github.com/wovo/sccots#main -f docker/<file-name> -t <image-na
 
 Building an image is essentially installing software on a fresh system,
 so it can take considerable time.
+When building, docker saves the result of each step
+(layer in docker terms), so a re-try or extension will essentially start 
+from the first failed or changed step.
 
 ### Run a container interactively
 
@@ -129,6 +134,10 @@ For a working directory, add
 -v ~/work:/root/work 
 ```
 
+To claim more memory than the default, use for instance
+```
+-m=8g
+```
 
 
 sudo docker rm -f work; 
@@ -149,10 +158,13 @@ docker exec -it work /bin/sh
 
 ### Terminology
 
-ROS is Robot Operating System, but it is neither an OS nor specifically for robots.
+ROS stands for Robot Operating System, 
+but it is neither an OS nor specifically for robots.
 ROS is middleware for communication between nodes, 
 which can be on the same host, or on different hosts within the
 same network (and with a VPN, on different networks).
+[[tinc](https://www.tinc-vpn.org/)]
+[[husarnet](https://husarnet.com/blog/ros2-docker)]
 
 ROS2 is the more same version of ROS, 
 with unified C++ / Python interfaces on top of same C implementation.
@@ -162,7 +174,24 @@ which could behave differently.
 ROS versions have cute names.
 [Humble](https://docs.ros.org/en/humble/)
 (Humble Hawksbill) is as of 2023 the latest version of ROS2.
-    
+
+### Communication
+
+ROS nodes within a ROS domain communicate via named topics.
+A topic has a single publisher node, and zero or more subscriber nodes.
+A node can publish and subscribe to multiple topics.
+
+A topic can be a message, a service, or an action.
+A message is one-way:  the publisher has no direct interaction with
+the subscribers.
+A 
+
+https://design.ros2.org/articles/interface_definition.html
+
+DDS
+
+ROS can record the value of topics over time in a bag file.
+A bag file can be played back for simulation, demo, debugging, etc.    
 
 ## Spinnaker
 
@@ -201,8 +230,6 @@ package
 parameter
     configuration value for a node
     
-node
-    participant in ros(2) communication
     
 image message
     http://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/Image.html
