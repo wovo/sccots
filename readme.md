@@ -40,6 +40,11 @@ A docker server on Linux can run only Linux containers.
 A docker server on Windows can be configured to run either
 windows containers, or Linux containers (using WSL), but
 not both at the same time. 
+However, a container can run a VM, and that VM can run an OS that
+is different from the host
+[win vm in linux docker](https://medium.com/axon-technologies/installing-a-windows-virtual-machine-in-a-linux-docker-container-c78e4c3f9ba1)
+[w10 enterprise](https://app.vagrantup.com/peru/boxes/windows-10-enterprise-x64-eval)
+)
 
 ### Installation
 
@@ -160,22 +165,9 @@ ROS versions have cute names.
 (Humble Hawksbill) is as of 2023 the latest version of ROS2.
     
 
-## Terminology
+## Spinnaker
 
-ros2
-    Ros = Robot Operating System, but it is neither an OS nor specifically for robots.
-    Ros is middleware for communication between nodes, 
-    which can be on the same host, or on different hosts within the
-    same network (and with a vpn, on different networks).
-    Ros2 is the more same version of ros, with
-    unified thin C++ / Python interfaces on top of same C implementation.
-    (The old ros had functionality in the C++ and Python layers, 
-    which could behave differently.)
-    
-humble
-    (Humble Hawksbill)
-    https://docs.ros.org/en/humble/
-    As of 2023 this is latest version of ros2.
+## Terminology
 
 topic
     distributed data
@@ -220,4 +212,8 @@ bag file
     timed recording of topics;
     can be played back for simulation, demo, debugging, etc.
     
-    
+## Notes
+
+- installing ros-humble-desktop-full on Pi4 16 Gb gives errors
+- include python3 in base
+- migrate to https://git-lfs.com/
