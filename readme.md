@@ -1,6 +1,8 @@
-SCCOTS : Standard Cboost Components Of The Shelve
+# SCCOTS : Standard Cboost Components Of The Shelve
 
-=============================================================================
+-----------------------------------------------------------------------------
+
+## Summary
 
 Sccots provides re-usable components 
 for intelligent industrial automation.
@@ -19,17 +21,17 @@ The current baseline:
 - ROS2 Humble Hawksbill
 - x64 (intel), aarch64 (Raspberry Pi 4)
 
-=============================================================================
+-----------------------------------------------------------------------------
 
-Install docker - Windows
+## Docker
+
+### Install docker - Windows
 
 To install dcoker on Windows:
     install docker desktop
     after each reboot: start it
 
-=============================================================================
-
-Install docker - Linux
+### Install docker - Linux
 
 To install docker on a fresh Ubuntu 22.04 
 (this takes quite some time):
@@ -55,6 +57,6 @@ To change the hotsname:
     sudo nano /etc/hosts
 ```
     
-=============================================================================
+-----------------------------------------------------------------------------
     
     
