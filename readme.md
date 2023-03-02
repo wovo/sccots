@@ -23,6 +23,8 @@ The current sccots baseline is:
 
 ## Docker
 
+![docker](pictures/docker.png)
+
 ### Terminology
 
 A docker container is a running environment 
