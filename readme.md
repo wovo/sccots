@@ -3,8 +3,9 @@
 
 ## Summary
 
-Sccots provides re-usable components 
-for intelligent industrial automation.
+Sccots is a set of re-usable components 
+for intelligent industrial automation
+using docker and ROS2.
 
 Docker containers are used to isolate dependencies 
 for hardware items like cameras
@@ -12,9 +13,9 @@ that require manufacturer specific tools
 (drivers, SDKs) to be installed.
 
 ROS2 is used to provide communication between docker containers.
-This enables seamless redeployment of AI processing and user interfaces.
+This enables redeployment of AI processing and user interfaces.
 
-The current baseline:
+The current sccots baseline is:
 
 - Ubuntu 22.04 LTS (Jammy Jellyfish)
 - ROS2 Humble Hawksbill
@@ -24,13 +25,13 @@ The current baseline:
 
 ### Terminology
 
-A docker container is a running environment, 
+A docker container is a running environment 
 with its own file system, but sharing the OS kernel
 with its host operating system and other docker images running on it.
 A docker container starts its life as a copy (instance) 
 of a docker image.
 
-A docker image file is the specification for creating a docker image.
+A docker file is the specification for creating a docker image.
 
 The docker server is the entity that runs docker containers.
 A docker server on Linux can run only Linux containers.
@@ -38,7 +39,7 @@ A docker server on Windows can be configured to run either
 windows containers, or Linux containers (using WSL), but
 not both at the same time. 
 
-### Install Docker
+### Installation
 
 To install docker on Windows install the docker desktop.
 Remember to restart it after a reboot.
@@ -56,36 +57,73 @@ sudo docker version
 To enable docker use by a non-root user:
 
 ```
-sudo usermod -aG docker <user_name>
+sudo usermod -aG docker <user-name>
 ```
 
-### Build a container
+### Build an image
 
-The sccots repository provides a number of container files:
+The sccots repository provides a number of docker files:
 
 - **base** (Ubuntu 22.04, ROS2 Humble)
 - **spinnaker** (base + spinnaker camera)
 
 
-To build a (local) container image-name from a sccots container file-name:
+To build a (local) image image-name from a sccots docker file file-name:
 
 ```
-sudo docker build github.com/wovo/sccots#main -f containers/<file-name> -t <image-name>
+sudo docker build github.com/wovo/sccots#main -f docker/<file-name> -t <image-name>
 ```
+
+Building an image is essentially installing software on a fresh system,
+so it can take considerable time.
 
 ### Run a container interactively
 
-To run a container that has been built, and get a shell to work in:
+To run an image that has been built in a new container, 
+and get a shell to work in:
 
 ```
-sudo docker run --name work -it <image-name>
+sudo docker run --name <container-name> -it <image-name>
  -v ~/work:/root/work 
  --device "/dev/bus/usb/001/021:/dev/bus/usb/001/021"
  --device "/dev/video0:/dev/video0"
 ```
 
-A container maintains state. 
-You can 
+When you leave the shell of a container it is stopped.
+A stopped container maintains it state.
+You can re-attached to a stopped container:
+
+```
+sudo docker restart <container-name>
+sudo docker attach <container-name>
+```
+
+A stopped container occupies space on the file system.
+To delete a container:
+
+```
+sudo docker rm -f <container-name>
+```
+
+
+### Using host resources
+
+A container has its own file system.
+You can provide access to elements of the host file system
+when the container is created by adding
+options to the docker run command.
+For USB camera device, add 
+
+```
+--device "/dev/video0:/dev/video0"
+```
+For a working directory, add
+ 
+```
+-v ~/work:/root/work 
+```
+
+
 
 sudo docker rm -f work; 
 sudo docker run --name work -m=8g 
