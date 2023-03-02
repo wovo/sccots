@@ -20,6 +20,11 @@ cd spinnaker-3.0.0.118-amd64
 # and prime for the ula to be accepted
 sudo apt install -y debconf-utils
 sudo cp ../spinnaker/ubuntu2204/install_spinnaker.sh .
-sudo echo "libgentl libspinnaker/accepted-flir-eula select true" | debconf-set-selections
-sudo
-bash install_spinnaker.sh
+sudo echo "libgentl libspinnaker/accepted-flir-eula select true" | sudo debconf-set-selections
+sudo bash install_spinnaker.sh
+
+# additionally needed for plain 22.04 (Jammy Jellyfish):
+# (but NOT for the docker??)
+# libswscale.so.5 -> libswscale-dev
+# libavcodec.so.58 -> libavcodec-dev
+# libavformat.so.58 -> libavformat-dev
