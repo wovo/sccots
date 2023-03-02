@@ -1,4 +1,5 @@
-# SCCOTS : Standard Cboost Components Of The Shelve
+# SCCOTS
+# Standard Cboost Components Of The Shelve
 
 ## Summary
 
@@ -35,9 +36,9 @@ To install docker on a fresh Ubuntu 22.04
 ```
 sudo apt-get update
 sudo apt-get upgrade -y
-sudo apt-get intsall -y curl
-curl -sSL https://get.docker.com | sh
-docker version
+sudo apt-get install -y curl
+sudo curl -sSL https://get.docker.com | sh
+sudo docker version
 ```    
     
 To enable docker use by a non-root user:
@@ -52,6 +53,19 @@ To change the hotsname:
     sudo nano /etc/hostname
     sudo nano /etc/hosts
 ```
+
+### Build and run containers
+
+To build local container from a sccots container file:
+
+```
+sudo docker build githib.com/wovo/sccots#main -f <sccots-container-file-name> -t <local-container-name>
+```
+
+Available sccots container file names:
+
+- ros2-humble
+
 
     
     
