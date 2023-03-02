@@ -42,8 +42,8 @@ windows containers, or Linux containers (using WSL), but
 not both at the same time. 
 However, a container can run a VM, and that VM can run an OS that
 is different from the host.
-[ [win vm in linux docker](https://medium.com/axon-technologies/installing-a-windows-virtual-machine-in-a-linux-docker-container-c78e4c3f9ba1) ]
-[ [w10 enterprise](https://app.vagrantup.com/peru/boxes/windows-10-enterprise-x64-eval) ]
+[[win vm in linux docker](https://medium.com/axon-technologies/installing-a-windows-virtual-machine-in-a-linux-docker-container-c78e4c3f9ba1)]
+[[w10 enterprise](https://app.vagrantup.com/peru/boxes/windows-10-enterprise-x64-eval)]
 
 ### Installation
 
