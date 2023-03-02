@@ -32,22 +32,18 @@ of a docker image.
 
 A docker image file is the specification for creating a docker image.
 
-The docker server is the enity that runs docker containers.
+The docker server is the entity that runs docker containers.
 A docker server on Linux can run only Linux containers.
 A docker server on Windows can be configured to run either
 windows containers, or Linux containers (using WSL), but
 not both at the same time. 
 
-### Install docker - Windows
+### Install Docker
 
-To install docker on Windows:
-    install docker desktop
-    after each reboot: start it
+To install docker on Windows install the docker desktop.
+Remember to restart it after a reboot.
 
-### Install docker - Linux
-
-To install docker on a fresh Ubuntu 22.04 
-(this takes quite some time):
+To install docker on a fresh Ubuntu 22.04:
 
 ```
 sudo apt-get update
@@ -62,26 +58,20 @@ To enable docker use by a non-root user:
 ```
 sudo usermod -aG docker <user_name>
 ```
-    
-To change the hotsname:
-
-```
-    sudo nano /etc/hostname
-    sudo nano /etc/hosts
-```
 
 ### Build a container
 
-To build a container image from a sccots container file:
+The sccots repository provides a number of container files:
+
+- **base** (Ubuntu 22.04, ROS2 Humble)
+- **spinnaker** (base + spinnaker camera)
+
+
+To build a (local) container image-name from a sccots container file-name:
 
 ```
 sudo docker build github.com/wovo/sccots#main -f containers/<file-name> -t <image-name>
 ```
-
-Available as sccots container file-name:
-
-- base: Ubuntu 22.04, ROS2 Humble
-- spinnaker: base + spinnaker camera
 
 ### Run a container interactively
 
