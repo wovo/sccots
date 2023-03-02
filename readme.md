@@ -139,6 +139,8 @@ docker exec -it work /bin/sh
 
 ## ROS2
 
+![ross2](pictures/ross2.png)
+
 ### Terminology
 
 ROS is Robot Operating System, but it is neither an OS nor specifically for robots.
