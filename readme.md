@@ -59,12 +59,13 @@ To change the hotsname:
 To build local container from a sccots container file:
 
 ```
-sudo docker build githib.com/wovo/sccots#main -f <sccots-container-file-name> -t <local-container-name>
+sudo docker build github.com/wovo/sccots#main -f containers/<sccots-container-file-name> -t <local-container-name>
 ```
 
 Available sccots container file names:
 
-- ros2-humble
+- base: Ubuntu 22.04, ROS2 Humble
+- spinnaker: base + spinnaker camera
 
 
     
