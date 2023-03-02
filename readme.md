@@ -1,7 +1,5 @@
 # SCCOTS : Standard Cboost Components Of The Shelve
 
------------------------------------------------------------------------------
-
 ## Summary
 
 Sccots provides re-usable components 
@@ -21,13 +19,11 @@ The current baseline:
 - ROS2 Humble Hawksbill
 - x64 (intel), aarch64 (Raspberry Pi 4)
 
------------------------------------------------------------------------------
-
 ## Docker
 
 ### Install docker - Windows
 
-To install dcoker on Windows:
+To install docker on Windows:
     install docker desktop
     after each reboot: start it
 
@@ -56,7 +52,6 @@ To change the hotsname:
     sudo nano /etc/hostname
     sudo nano /etc/hosts
 ```
-    
------------------------------------------------------------------------------
+
     
     
