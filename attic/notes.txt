@@ -1,0 +1,66 @@
+       
+    
+  
+
+https://docs.ros.org/en/humble/
+https://docs.ros.org/en/humble/Tutorials.html
+https://github.com/ros2/examples/tree/rolling/rclcpp/topics/minimal_subscriber
+
+    
+node
+    participant in ROS communication
+    
+image message
+    http://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/Image.html
+    http://docs.ros.org/en/noetic/api/std_msgs/html/msg/Header.html
+
+bag file
+    timed recording of topics
+   
+==================================================================
+
+install docker
+docker build github.com/wovo/sccots#main:ros -t sccots - not on windows :(
+docker build github.com/wovo/sccots#main -f ros -t sccots
+docker run --name work --rm --device "/dev/video0:/dev/video0" -it sccots 
+docker restart work
+docker attach work
+docker stop work
+docker remove -f work
+docker exec -it work bash
+docker logs work
+ros2 run demo_nodes_cpp listener
+ros2 run demo_nodes_cpp talker
+
+two docker containers on the same machine communicate
+
+attaching/deattaching: https://docs.docker.com/engine/reference/commandline/attach/
+(security concerns)
+
+docker build options
+https://docs.docker.com/engine/reference/commandline/build/
+
+cd home
+
+=====================================================================
+
+https://docs.ros.org/en/foxy/Releases.html
+humble not on Ubuntu
+galactic not supported??
+-> use foxy
+
+install ros2 on Ubuntu
+
+sudo apt update
+sudo apt upgrade
+sudo apt install -y ros-foxy-desktop
+sudo apt install -y libopencv-dev python3-opencv
+
+in the docker:
+cd root
+bash
+source /*.sh
+
+X11 from inside docker seems possible
+https://github.com/clayrisser/docker-gtk
+# -e DISPLAY=($DISPLAY) -v /tmp/.X11-unix:/tmp/.X11-unix

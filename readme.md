@@ -28,6 +28,7 @@ The current sccots baseline is:
 ### Terminology
 
 [docker glossary](https://docs.docker.com/glossary/)
+[docker terminology](https://docs.docker.com/contribute/style/terminology/)
 
 A docker container is a running environment 
 with its own file system, but sharing the OS kernel
@@ -58,6 +59,7 @@ To install docker on a fresh Ubuntu 22.04:
 sudo apt-get update
 sudo apt-get upgrade -y
 sudo apt-get install -y curl
+sudo apt-get install -y python-is-python3 python3-pip
 sudo curl -sSL https://get.docker.com | sh
 sudo docker version
 ```    
@@ -116,6 +118,9 @@ To delete a container:
 sudo docker rm -f <container-name>
 ```
 
+An error from a shell command while the current dirctory is
+the root (/) terminates the shell, hence the sccots
+images start the shell in /work.
 
 ### Using host resources
 
@@ -138,19 +143,6 @@ To claim more memory than the default, use for instance
 ```
 -m=8g
 ```
-
-
-sudo docker rm -f work; 
-sudo docker run --name work -m=8g 
- -v ~/work:/root/work 
- --device "/dev/bus/usb/001/021:/dev/bus/usb/001/021"
- --device "/dev/video0:/dev/video0"
- -it sccots bash
- 
-docker run --name work -it sccots 
-docker restart work
-docker attach work
-docker exec -it work /bin/sh 
 
 ## ROS2
 
@@ -182,16 +174,51 @@ A topic has a single publisher node, and zero or more subscriber nodes.
 A node can publish and subscribe to multiple topics.
 
 A topic can be a message, a service, or an action.
-A message is one-way:  the publisher has no direct interaction with
-the subscribers.
-A 
 
-https://design.ros2.org/articles/interface_definition.html
+A message is a one-way publish-subscribe communication:
+the publisher has no direct interaction with the subscribers.
+By default, messages are queued for each subscriber (up to a specified limit), 
+so each subscriber will in the end receive all messages.
 
-DDS
+A service is a request-response communication.
+A user node issues a request.
+The server node responds with a response.
 
-ROS can record the value of topics over time in a bag file.
+An action is like a service, but while the action is 
+being executed the user gets updates.
+
+DDS (Data Distribution Service) is the defaulkt protocol used
+by ROS2 to distribute topics to ros nodes.
+
+ROS can record the value of topics (including responses and updates??)
+over time in a bag file.
 A bag file can be played back for simulation, demo, debugging, etc.    
+
+Messages, service requests, service responses, action requests,
+action updates, and action results are all defined by ros interfaces.
+An interface defines the type (structure) of the transferred data.
+ROS has many pre-defined interfaces, for isntance for 
+[camera images](http://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/Image.html).
+
+By default, ros nodes in containers on the same host can communicate
+with each other, but not with nodes containers on another host on the same network.
+To enable communication over a network, add this to the docker run command
+[[ref](https://answers.ros.org/question/358453/ros2-docker-multiple-hosts/)]:
+```
+--net=host --pid=host
+```
+
+package = collection of nodes, can have internal topics
+
+parameter = configuration value for a node
+
+node = participant in ROS communication
+
+## USB camera
+
+feh -Z -R 1 -Y
+capture has a few seconds delay, but that seems to be the camera
+@pi larger images are not received
 
 ## Spinnaker
 
@@ -205,41 +232,55 @@ topic
         echo <topic> 
         pub <topic> <type> <data> --once --rate
         hz <topic>
-    ros2 interface show <topic>    
+    ros2 interface show <topic> 
 
-interface
-    communication between ros nodes.
-    Can be by message, service or action
-    https://design.ros2.org/articles/interface_definition.html
-    
-message
-    ros one-way publish-subscribe (by default queued) inter-process communication interface
-    .msg file describes a message
-    in msg/ directory of a ROS package
+## Raspberry Pi
 
-service
-    request / response interface
-    .srv describes a service (request and response)
-    
-action 
-    request - feedback - final interface
-    
-package  
-    collection of nodes  
-
-parameter
-    configuration value for a node
-    
-    
-image message
-    http://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/Image.html
-
-bag file
-    timed recording of topics;
-    can be played back for simulation, demo, debugging, etc.
+- Raspberry Pi 4, 8 Gb memory, 32 Gb flash card
+- Ubuntu 22.04, python 3.10.6
+- download, flash, install takes ~ 1 hour (elapsed)
     
 ## Notes
 
+- > 10 ms time domain
 - installing ros-humble-desktop-full on Pi4 16 Gb gives errors
 - include python3 in base
 - migrate to https://git-lfs.com/
+- ros nodes (in dockers) for:
+    - gpio
+    - camera
+    - GUI
+    - robot (arjun)
+    - buisiness logic
+    - sensors GPS, IMMU, Lidar /  profile-scanner, hyperspectral camera, 3D pointcloud 
+    - actuators motor goto, updates, final
+    - PLC 
+    
+ros node : a python or C++ object
+ros application : a python or C++ application, 
+docker container : can run a number of ros applications
+
+https://www.ros.org/reps/rep-0145.html
+https://github.com/ros-controls/ros2_control
+https://control.ros.org/master/index.html
+https://control.ros.org/master/doc/ros2_control/hardware_interface/doc/writing_new_hardware_interface.html
+https://control.ros.org/master/doc/ros2_controllers/doc/controllers_index.html
+
+sccots hardware interface
+    service create <name>
+        gpio <in,out,in_out,oc> <initial value> <specific>
+            write <- 0 1 open
+            read -> output 0, output 1, input 0, input 1
+            publish?
+        spi 
+        i2c
+        serial
+            write -> string
+            read <- string
+            publish?
+        keypad
+        sensor        
+        immu
+    service list
+    service delete    
+
