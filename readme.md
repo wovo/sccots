@@ -81,7 +81,7 @@ The sccots repository provides a number of docker files:
 To build a (local) image image-name from a sccots docker file file-name:
 
 ```
-sudo docker build github.com/wovo/sccots#main -f docker/<file-name> -t <image-name>
+sudo docker build github.com/wovo/sccots#main -f dockers/<file-name> -t <image-name>
 ```
 
 Building an image is essentially installing software on a fresh system,
