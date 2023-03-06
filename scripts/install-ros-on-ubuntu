@@ -1,19 +1,9 @@
 # ==========================================================================
 #
-# sccots base docker file
-#
-# has:
-# - ubunto 22.04
-# - ros2 humble
+# script to install ros2 on ubuntu
 #
 # ==========================================================================
 
-# ubuntu LTS (jammy)
-FROM ubuntu:22.04
-
-# for apt to be noninteractive
-ENV DEBIAN_FRONTEND noninteractive
-ENV DEBCONF_NONINTERACTIVE_SEEN true
 
 # locales
 sudo apt update 
@@ -29,12 +19,12 @@ sudo echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/
 sudo apt upgrade -y
 sudo apt update
 
-sudo mkdir /root/temp
-cd /root/temp
 sudo apt install -y ros-humble-desktop
 sudo apt install -y ros-dev-tools
+mkdir ~/temp
+cd ~/temp
 sudo git clone https://github.com/J-Rojas/ros2-docker
-sudo cp ros2-docker/ros2_entrypoint.sh /root
+sudo cp ros2-docker/ros2_entrypoint.sh ~
 cd ~
 sudo echo "source ros2_entrypoint.sh" >> .bashrc
 

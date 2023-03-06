@@ -284,3 +284,6 @@ sccots hardware interface
     service list
     service delete    
 
+https://docs.ros.org/en/crystal/Installation/Windows-Install-Binary.html#installing-prerequisites
+
+https://github.com/ros2/common_interfaces
