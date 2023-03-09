@@ -2,15 +2,15 @@
 
 ![docker](docker.png)
 
-The docker files are generated.
-Run generate(.py,.bat,) to re-generate the files.
-
-Docker files:
+Available docker files:
 
 - **ubuntu** (Ubuntu 22.04)
 - **develop** (ubuntu + Python, C++)
 - **ros** (develop + ROS2 Humble)
 - **spinnaker** (ros + spinnaker camera)    
+
+These docker files are generated.
+Edit the gebnerate.py file and run it to re-generate the files.
 
 ### Terminology
 
