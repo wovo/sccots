@@ -39,6 +39,11 @@ RUN apt update
 # desktop-full is installed, this might be overkill
 RUN apt install -y ros-humble-desktop
 RUN apt install -y ros-dev-tools
+# included in above, maybe needed with a smaller base install 
+RUN apt install -y python3-colcon-common-extensions
+
+# not yet installed??
+RUN apt install -y pip
 
 WORKDIR /root
 RUN echo "export ROS2_WS=~/ros2_ws" >> .bashrc
@@ -48,5 +53,5 @@ RUN echo "source /opt/ros/humble/setup.bash" >> .bashrc
 WORKDIR /root
 RUN echo "alias python=python3" >> .bashrc
 RUN echo "alias p=python3" >> .bashrc
-RUN echo "echo scotts-ros2-humble environment" >> .bashrc
+RUN echo "echo scotts ros2-humble environment" >> .bashrc
 CMD [ "bash" ]

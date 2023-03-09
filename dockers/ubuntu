@@ -1,0 +1,19 @@
+# ==========================================================================
+#
+# sccots ubuntu docker file
+#
+# has:
+# - ubunto 22.04
+# - python & C++ development environment
+#
+# ==========================================================================
+
+# ubuntu LTS (jammy)
+FROM ubuntu:22.04
+
+# setup work environment
+WORKDIR /root
+RUN echo "alias python=python3" >> .bashrc
+RUN echo "alias p=python3" >> .bashrc
+RUN echo "echo scotts ubuntu bare development environment" >> .bashrc
+CMD [ "bash" ]

@@ -316,3 +316,6 @@ windows
 docker build github.com/wovo/sccots#main -f dockers/base -t work        
 docker rm work
 docker run --name work -it work
+docker run --name work -v "C:\Wouter\cboost\sccots\work:/root/work" -it work
+
+
