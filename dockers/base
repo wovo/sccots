@@ -42,7 +42,7 @@ RUN apt install -y ros-dev-tools
 
 WORKDIR /root
 RUN echo "export ROS2_WS=~/ros2_ws" >> .bashrc
-RUN echo "source /opt/ros/humble/setupo.bash" >> .bashrc
+RUN echo "source /opt/ros/humble/setup.bash" >> .bashrc
 
 # setup work environment
 WORKDIR /root

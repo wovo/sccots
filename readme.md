@@ -310,4 +310,9 @@ interfaces - messages
     pin_rise
     pin_fall
     
-        
+==============================
+
+windows
+docker build github.com/wovo/sccots#main -f dockers/base -t work        
+docker rm work
+docker run --name work -it work
