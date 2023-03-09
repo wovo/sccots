@@ -287,3 +287,27 @@ sccots hardware interface
 https://docs.ros.org/en/crystal/Installation/Windows-Install-Binary.html#installing-prerequisites
 
 https://github.com/ros2/common_interfaces
+
+list service
+create service
+delete service <name>
+
+<workspace-name> (a directory)
+    src
+        <package-name> (for some reason, inside src)
+        
+interfaces - services
+    list <pattern>
+    create <name> 
+    delete <name>
+
+    pin_direction
+    pin_set
+    pin_get    
+    
+interfaces - messages
+    pin_change
+    pin_rise
+    pin_fall
+    
+        
