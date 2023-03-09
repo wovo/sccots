@@ -60,7 +60,7 @@ sudo usermod -aG docker <user-name>
 ### Build an image
 
 
-To build a (local) image image-name from a sccots docker file file-name:
+To build a (local) image <image-name> from a sccots docker file <file-name>:
 
 ```
 sudo docker build github.com/wovo/sccots#main -f dockers/<file-name> -t <image-name>
@@ -71,6 +71,7 @@ so it can take considerable time.
 When building, docker saves the result of each step
 (layer in docker terms), so a re-try or extension will essentially start 
 from the first failed or changed step.
+The scotts container files are designed to take advantage of this effect.
 
 ### Run a container interactively
 
@@ -79,9 +80,6 @@ and get a shell to work in:
 
 ```
 sudo docker run --name <container-name> -it <image-name>
- -v ~/work:/root/work 
- --device "/dev/bus/usb/001/021:/dev/bus/usb/001/021"
- --device "/dev/video0:/dev/video0"
 ```
 
 When you leave the shell of a container it is stopped.
@@ -115,7 +113,12 @@ For USB camera device, add
 ```
 --device "/dev/video0:/dev/video0"
 ```
-For a working directory, add
+
+For development, it is often convenient to have a work 
+directory on the host system, on which better tooling
+(editors etc.) is available.
+To make the host directory ~/work available as /root/work, 
+add
  
 ```
 -v ~/work:/root/work 
