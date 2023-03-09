@@ -19,6 +19,16 @@ ubuntu = component(
         # update & upgrade
         RUN apt update
         RUN apt upgrade -y    
+        
+        # for apt to be noninteractive
+        ENV DEBIAN_FRONTEND noninteractive
+        ENV DEBCONF_NONINTERACTIVE_SEEN true
+        
+        # locales
+        RUN apt update 
+        RUN apt install -y locales
+        RUN locale-gen en_US en_US.UTF-8
+        RUN update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8      
     """
 )    
 

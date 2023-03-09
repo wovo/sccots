@@ -6,15 +6,16 @@ The docker files are generated.
 Run generate(.py,.bat,) to re-generate the files.
 
 Docker files:
-    - ubuntu
-    - develop
-    - ros
-    - spinnaker
+
+- **ubuntu** (Ubuntu 22.04)
+- **develop** (ubuntu + Python, C++)
+- **ros** (develop + ROS2 Humble)
+- **spinnaker** (ros + spinnaker camera)    
 
 ### Terminology
 
-[docker glossary](https://docs.docker.com/glossary/)
-[docker terminology](https://docs.docker.com/contribute/style/terminology/)
+[[docker glossary](https://docs.docker.com/glossary/)]
+[[docker terminology](https://docs.docker.com/contribute/style/terminology/)]
 
 A docker container is a running environment 
 with its own file system, but sharing the OS kernel
@@ -27,7 +28,7 @@ A docker file is the specification (blueprint) for creating a docker image.
 The docker server is the entity that runs docker containers.
 A docker server on Linux can run only Linux containers.
 A docker server on Windows can be configured to run either
-windows containers, or Linux containers (using WSL), but
+Windows containers, or Linux containers (using WSL), but
 not both at the same time. 
 However, a container can run a VM, and that VM can run an OS that
 is different from the host.
@@ -57,11 +58,6 @@ sudo usermod -aG docker <user-name>
 ```
 
 ### Build an image
-
-The sccots repository provides a number of docker files:
-
-- **base** (Ubuntu 22.04, ROS2 Humble)
-- **spinnaker** (base + spinnaker camera)
 
 
 To build a (local) image image-name from a sccots docker file file-name:
