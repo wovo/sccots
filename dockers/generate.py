@@ -27,7 +27,8 @@ ubuntu = component(
 python = component( 
     "Python",
     """
-        RUN sudo apt install -y python3 pip
+        RUN apt install -y python3
+        RUN apt install -y pip
         WORKDIR /root
         RUN echo "alias python=python3" >> .bashrc
         RUN echo "alias p=python3" >> .bashrc 
@@ -39,8 +40,8 @@ python = component(
 cpp = component( 
     "C++",
     """
-        RUN sudo apt install -y build-essential
-        RUN sudo apt install -y manpages-dev      
+        RUN apt install -y build-essential
+        RUN apt install -y manpages-dev      
     """
 )  
 
@@ -114,7 +115,7 @@ shell = component(
     "bash login shell",
     """
         WORKDIR /root
-        RUN echo "echo environment: <<name>>" >> .bashrc
+        RUN echo "echo sccots environment: <<name>>" >> .bashrc
         CMD [ "bash" ]  
     """
 )  

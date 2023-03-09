@@ -27,6 +27,6 @@ RUN apt upgrade -y
 # ============================================================================
 
 WORKDIR /root
-RUN echo "echo environment: ubuntu" >> .bashrc
+RUN echo "echo sccots environment: ubuntu" >> .bashrc
 CMD [ "bash" ]  
 
