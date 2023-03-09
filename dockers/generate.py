@@ -84,6 +84,9 @@ ros = component(
         RUN apt install -y ros-dev-tools
         # included in above, maybe needed with a smaller base install 
         RUN apt install -y python3-colcon-common-extensions   
+        
+        RUN echo "export ROS2_WS=~/work" >> .bashrc
+        RUN echo "source /opt/ros/humble/setup.bash" >> .bashrc        
     """
 )  
 
