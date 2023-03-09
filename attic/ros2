@@ -42,7 +42,8 @@ RUN apt install -y ros-dev-tools
 # included in above, maybe needed with a smaller base install 
 RUN apt install -y python3-colcon-common-extensions
 
-# not yet installed??
+# python
+RUN apt install -y python3
 RUN apt install -y pip
 
 WORKDIR /root

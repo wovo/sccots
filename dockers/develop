@@ -1,6 +1,6 @@
 # ============================================================================
 #
-# sccots container file ubuntu
+# sccots container file develop
 #
 # This is a generated file.
 #
@@ -22,11 +22,33 @@ RUN apt upgrade -y
 
 # ============================================================================
 #
+# Python
+#
+# ============================================================================
+
+RUN sudo apt install -y python3 pip
+WORKDIR /root
+RUN echo "alias python=python3" >> .bashrc
+RUN echo "alias p=python3" >> .bashrc 
+
+
+# ============================================================================
+#
+# C++
+#
+# ============================================================================
+
+RUN sudo apt install -y build-essential
+RUN sudo apt install -y manpages-dev      
+
+
+# ============================================================================
+#
 # bash login shell
 #
 # ============================================================================
 
 WORKDIR /root
-RUN echo "echo environment: ubuntu" >> .bashrc
+RUN echo "echo environment: develop" >> .bashrc
 CMD [ "bash" ]  
 
