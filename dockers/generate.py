@@ -58,7 +58,7 @@ cpp = component(
 # ============================================================================   
 
 ros = component( 
-    "ROS2 humble ",
+    "ROS2 humble",
     """
         RUN apt install -y locales
         RUN locale-gen en_US en_US.UTF-8
