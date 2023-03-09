@@ -165,7 +165,7 @@ def main():
 
 if __name__ == "__main__":
     main()
-    print( "Docker files generated.\n"
-    print( "Don't forget to push to git.\n"
+    print( "Docker files generated.\n" )
+    print( "Don't forget to push to git.\n" )
 
 # ============================================================================   
